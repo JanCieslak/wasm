@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Wasm</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+
+    <script>
+      fetch('http://localhost:1234/asc/test.wasm')
+        .then(response => response.blob())
+        .then(response => response.arrayBuffer())
+        .then(buffer => {
+          WebAssembly.instantiate(buffer)
+            .then(obj => console.log(obj.instance.exports.Calculate(123)))
+        })
+
+      // fetch('http://localhost:1234/rs/pkg/wasm_rs_bg.wasm')
+      //   .then(response => response.blob())
+      //   .then(response => response.arrayBuffer())
+      //   .then(buffer => {
+      //     WebAssembly.instantiate(buffer)
+      //       .then(obj => console.log(obj.instance.exports.Calculate(123)))
+      //   })
+    </script>
+
+  </body>
+</html>
