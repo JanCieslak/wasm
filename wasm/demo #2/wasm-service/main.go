@@ -74,10 +74,10 @@ func readWasm(langType string) []byte {
 }
 
 func handleCompile(w http.ResponseWriter, r *http.Request) {
-	request := getRequest(r)
-	saveFile(request)
-	compile(request.LangType)
-	wasmBytes := readWasm(request.LangType)
+  request := getRequest(r)
+  saveFile(request)
+  compile(request.LangType)
+  wasmBytes := readWasm(request.LangType)
 
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Content-Type", "application/octet-stream")
